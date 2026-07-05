@@ -8,6 +8,9 @@ interface AnswerQuestionUseCaseRequest {
   questionId: string
   content: string
 }
+interface AnswerQuestionUseCaseResponse {
+  answer: Answer
+}
 // A partir dessa interface, utilizamos ela para recuperar os atributos da classe alvo
 export class AnswerQuestionUseCase {
   // Injetando a dependência do repositório aqui
@@ -18,7 +21,7 @@ export class AnswerQuestionUseCase {
     instructorId,
     questionId,
     content,
-  }: AnswerQuestionUseCaseRequest) {
+  }: AnswerQuestionUseCaseRequest): Promise<AnswerQuestionUseCaseResponse> {
     const answer = Answer.create({
       content,
       authorId: new UniqueEntityId(instructorId),
@@ -28,6 +31,8 @@ export class AnswerQuestionUseCase {
     // Após criar a answer, usamos o método CREATE pra salvar
     await this.answerRepository.create(answer)
 
-    return answer
+    return {
+      answer,
+    }
   }
 }
