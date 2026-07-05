@@ -14,7 +14,7 @@ interface AnswerQuestionUseCaseResponse {
 // A partir dessa interface, utilizamos ela para recuperar os atributos da classe alvo
 export class AnswerQuestionUseCase {
   // Injetando a dependência do repositório aqui
-  constructor(private answerRepository: AnswersRepository) { }
+  constructor(private answerRepository: AnswersRepository) {}
 
   // Usamos desestruturação pra recuperar os atributos
   async execute({
