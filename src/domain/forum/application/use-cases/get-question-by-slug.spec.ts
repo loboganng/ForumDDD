@@ -1,8 +1,7 @@
-import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { InMemoryQuestionsRepository } from '../../../../../test/respositories/in-memory-questions-repository'
-import { Question } from '../../enterprise/entities/question'
-import { Slug } from '../../enterprise/entities/value-objects/slug'
 import { GetQuestionBySlugUseCase } from './get-question-by-slug'
+import { makeQuestion } from '../../../../../test/factories/make-question'
+import { Slug } from '../../enterprise/entities/value-objects/slug'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 // SUT -> System Under Test
@@ -15,11 +14,9 @@ describe('Get question by slug', () => {
   })
 
   it('should be able to get a question by slug', async () => {
-    const newQuestion = Question.create({
-      title: 'Example question',
+    // Aqui usamos a factory de question pra gerar uma nova
+    const newQuestion = makeQuestion({
       slug: Slug.create('example-question'),
-      authorId: new UniqueEntityId(),
-      content: 'Example content',
     })
 
     await inMemoryQuestionsRepository.create(newQuestion)
