@@ -1,3 +1,4 @@
+import { Question } from '../../enterprise/entities/question'
 import { QuestionsRepository } from '../repositories/questions-repository'
 
 // Para ficar um pouco mais organizado, criamos uma interface que vai receber os atributos
@@ -10,7 +11,9 @@ interface EditQuestionUseCaseRequest {
 
 //  Creating a response type for the answer
 // As we're deleting a question, this response will be void
-interface EditQuestionUseCaseResponse {}
+interface EditQuestionUseCaseResponse {
+  question: Question
+}
 
 // A partir dessa interface, utilizamos ela para recuperar os atributos da classe alvo
 export class EditQuestionUseCase {
@@ -42,6 +45,8 @@ export class EditQuestionUseCase {
 
     await this.questionsRepository.save(question)
 
-    return {}
+    return {
+      question,
+    }
   }
 }
