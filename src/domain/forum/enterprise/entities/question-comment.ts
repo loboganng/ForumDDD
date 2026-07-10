@@ -8,7 +8,7 @@ export interface QuestionCommentProps extends CommentProps {
 }
 
 // Classe comment já possui todas os getters/setters
-export class QuestionComment extends Comment<QuestionCommentProps> {
+export class QuestionsComment extends Comment<QuestionCommentProps> {
   get questionId() {
     return this.props.questionId
   }
@@ -17,7 +17,7 @@ export class QuestionComment extends Comment<QuestionCommentProps> {
     props: Optional<QuestionCommentProps, 'createdAt'>,
     id?: UniqueEntityId,
   ) {
-    const questionComment = new QuestionComment(
+    const questionComment = new QuestionsComment(
       {
         ...props,
         createdAt: props.createdAt ?? new Date(),

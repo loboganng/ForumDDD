@@ -38,7 +38,9 @@ describe('Delete answer', () => {
     })
 
     // Confirmando que não existem objetos no array
-    expect(inMemmoryQuestionsRepository.items[0].bestAnswerId).toEqual(answer.id)
+    expect(inMemmoryQuestionsRepository.items[0].bestAnswerId).toEqual(
+      answer.id,
+    )
   })
 
   it('should NOT be able to choose another users questions best answer', async () => {
