@@ -1,10 +1,10 @@
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { QuestionsRepository } from '../repositories/questions-repository'
-import { QuestionsComment } from '../../enterprise/entities/question-comment'
+import { QuestionComment } from '../../enterprise/entities/question-comment'
 import { QuestionCommentsRepository } from '../repositories/question-comments-repository'
 
 // Para ficar um pouco mais organizado, criamos uma interface que vai receber os atributos
-interface CommentOnQuestionnUseCaseRequest {
+interface CommentOnQuestionUseCaseRequest {
   authorId: string
   questionId: string
   content: string
@@ -12,7 +12,7 @@ interface CommentOnQuestionnUseCaseRequest {
 
 //  Creating a response type for the answer
 interface CommentOnQuestionnUseCaseResponse {
-  questionComment: QuestionsComment
+  questionComment: QuestionComment
 }
 
 // A partir dessa interface, utilizamos ela para recuperar os atributos da classe alvo
@@ -28,14 +28,14 @@ export class CommentOnQuestionnUseCase {
     authorId,
     questionId,
     content,
-  }: CommentOnQuestionnUseCaseRequest): Promise<CommentOnQuestionnUseCaseResponse> {
+  }: CommentOnQuestionUseCaseRequest): Promise<CommentOnQuestionnUseCaseResponse> {
     const question = await this.questionsRepository.findById(questionId)
 
     if (!question) {
       throw new Error('Question not found.')
     }
 
-    const questionComment = QuestionsComment.create({
+    const questionComment = QuestionComment.create({
       authorId: new UniqueEntityId(authorId),
       questionId: new UniqueEntityId(questionId),
       content,
