@@ -1,7 +1,7 @@
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { AnswersRepository } from '../repositories/answers-repository'
 import { AnswerComment } from '../../enterprise/entities/answer-comment'
-import { AnswerCommentsRepository } from '../repositories/answer-comments.repository'
+import { AnswerCommentsRepository } from '../repositories/answer-comments-repository'
 
 // Para ficar um pouco mais organizado, criamos uma interface que vai receber os atributos
 interface CommentOnAnswerUseCaseRequest {

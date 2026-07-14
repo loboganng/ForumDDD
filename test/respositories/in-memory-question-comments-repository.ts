@@ -6,13 +6,13 @@ export class InMemoryQuestionCommentsRepository implements QuestionCommentsRepos
 
   // Find by ID
   async findById(id: string) {
-    const questioncomment = this.items.find((item) => item.id.toString() === id)
+    const questionComment = this.items.find((item) => item.id.toString() === id)
 
-    if (!questioncomment) {
+    if (!questionComment) {
       return null
     }
 
-    return questioncomment
+    return questionComment
   }
 
   // Create
